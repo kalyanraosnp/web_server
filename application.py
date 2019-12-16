@@ -47,7 +47,7 @@ def upload_file():
             if len(x[0][0]) > 0:
                 for i in range(len(x[0][0])):
                     t.append(x[0][0][i][1])
-            return render_template('table.html',img_text=img_text,x=len(x[0][2]),z=len(x[0][3]),img_list=img,hyp=t,p=len(x[0][0]))
+            return render_template('table.html',img_text=img_text,x=len(x[0][2]),z=len(x[0][3]),img_list=img,hyp=t,p=len(x[0][0]),text=x[0][1])
 
         else:
             flash('Allowed file types are  pdf')
