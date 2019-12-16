@@ -4,6 +4,8 @@ import pickle
 from azure.storage.blob import BlockBlobService
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
+import PyPDF2
+
 app = Flask(__name__)
 app.secret_key = 'mkljlnhkbjgvjfcdxsrzeawresdtfyguoiojkl;kmnjhbgytfre5643w52q4awserdtfgyuhijnBHGVYDRESW#@W$%^&*IOKMNBVCGFDRER%$&^&T*(UI'
 ALLOWED_EXTENSIONS = set(['pdf'])
@@ -39,15 +41,20 @@ def upload_file():
             img = []
             img_text = []
             t = []
+            text=[]
             for i in range(len(x[0][2])):
                 img_text.append([b64encode(x[0][3][i][0]).decode(), i, x[0][2][i][0],x[0][4][0][0][i][1],', '.join(x[0][4][0][2][i][1]),', '.join(x[0][4][0][1][i][1])])
             for i in range(len(x[0][3])):
-                img.append([i,b64encode(x[0][3][i][0]).decode()])
+                img.append([i,b64encode(x[0][3][i][0]).decode(),', '.join(x[0][6][i][0])])
             flash('File successfully uploaded')
             if len(x[0][0]) > 0:
                 for i in range(len(x[0][0])):
                     t.append(x[0][0][i][1])
-            return render_template('table.html',img_text=img_text,x=len(x[0][2]),z=len(x[0][3]),img_list=img,hyp=t,p=len(x[0][0]))
+            for i in range(len(x[0][5][0][1])):
+                text.append([i,x[0][1][i],x[0][5][0][i][0][1],', '.join(x[0][5][0][2][i][1]),', '.join(x[0][5][0][1][i][1])])
+
+
+            return render_template('table.html',img_text=img_text,x=len(x[0][2]),z=len(x[0][3]),img_list=img,hyp=t,p=len(x[0][0]),text=text,j=len(x[0][5][0][1]))
 
         else:
             flash('Allowed file types are  pdf')
