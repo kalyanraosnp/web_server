@@ -60,6 +60,8 @@
     </div>
     <div class="col-sm">
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#img" aria-expanded="false" aria-controls="img">IMAGES</button>
+          <button class="btn btn-primary" type="button"  data-toggle="collapse" data-target="#text" aria-expanded="false" aria-controls="img_text">TEXT ANALYTICS</button>
+
   <button class="btn btn-primary" type="button"  data-toggle="collapse" data-target="#img_text" aria-expanded="false" aria-controls="img_text">VISION AND TEXT ANALYTICS</button>
 
     </div>
@@ -67,9 +69,15 @@
     </div>
   </div>
 </div>
-   
-</p>
 
+</p>
+    <div class="collapse multi-collapse" id="text">
+      <div class="card card-body">
+            {% block text %}
+
+          {% endblock %}
+      </div>
+    </div>
 
     <div class="collapse multi-collapse" id="img">
       <div class="card card-body">
