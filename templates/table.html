@@ -88,14 +88,15 @@
     <tbody>
 
     {% for i in range(j) %}
-
-        <tr>
-            <td>{{ text[i][0] }}</td>
-            <td>{{text[i][1][1]}}</td>
-            <td>{{text[i][2]}}</td>
-            <td>{{text[i][3]}}</td>
-            <td>{{text[i][4]}}</td>
-        </tr>
+        {%if text[i][1][1]!='' %}
+            <tr>
+                <td>{{ text[i][0] }}</td>
+                <td>{{text[i][1][1]}}</td>
+                <td>{{text[i][2]}}</td>
+                <td>{{text[i][3]}}</td>
+                <td>{{text[i][4]}}</td>
+            </tr>
+        {%endif%}
 
     {% endfor %}
     </tbody>
